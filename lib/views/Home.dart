@@ -1,18 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todoapp/controllers/HomeController.dart';
 import 'package:todoapp/models/Todo.dart';
 import 'package:todoapp/views/TodoItem.dart';
 
-class Home extends StatefulWidget {
-
-  @override
-  _HomeState createState() => new _HomeState();
-}
-
-class _HomeState extends State<Home> {
-
-  List<Todo> items = [];
+class Home extends StatelessWidget {
+  final HomeController homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +17,7 @@ class _HomeState extends State<Home> {
       body: new ListView(
         padding: EdgeInsets.all(20),
         children: [
-          ...items
+          ...homeController.items
               .map(
                 (todo) => new TodoItem(
               onItemView: null,
