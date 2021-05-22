@@ -13,24 +13,18 @@ class TodoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: EdgeInsets.fromLTRB(40, 8, 40, 8),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border:
-        Border(top: BorderSide(color: Color.fromARGB(255, 209, 213, 218))),
-      ),
-      child: new ListTile(
-        title: todo.statusText == Status.DONE ? new Text(todo.title,
-          style: TextStyle(
-            decoration: TextDecoration.lineThrough
-          ),
-        ) : new Text(todo.title),
-        subtitle: new Text(todo.description),
-        onTap: () {
-          onItemView(todo);
+    return new ListTile(
+      leading: Checkbox(
+        value: todo.status == Status.DONE,
+        onChanged: (bool newValue) {
+          // onChanged(newValue);
         },
       ),
+      title: new Text(todo.title),
+      subtitle: new Text(todo.description),
+      onTap: () {
+        onItemView(todo);
+      },
     );
   }
 }

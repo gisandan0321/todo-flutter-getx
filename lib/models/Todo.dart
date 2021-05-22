@@ -7,10 +7,9 @@ class Todo {
   String title;
   String description;
   String status;
-  String statusText;
 
 
-  Todo({this.id, this.title, this.description, this.status, this.statusText});
+  Todo({this.id, this.title, this.description, this.status});
 
   getId() {
     return this.id;
