@@ -1,5 +1,3 @@
-import 'package:todoapp/app/database/QueryBuilder.dart';
-
 class Todo {
 
   static const String TABLE = "todo";
@@ -77,7 +75,7 @@ class Todo {
   }
 
   // Delete
-  Future<int> delete(int id, database) async {
-    return await database.delete(TABLE, where: 'id = ?', whereArgs: [id]);
+  Future<int> delete(database) async {
+    return await database.delete(TABLE, where: 'id = ?', whereArgs: [this.id]);
   }
 }

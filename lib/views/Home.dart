@@ -5,6 +5,7 @@ import 'package:todoapp/app/widgets/ProgressContainer.dart';
 import 'package:todoapp/controllers/HomeController.dart';
 import 'package:todoapp/models/Todo.dart';
 import 'package:todoapp/views/AddTodo.dart';
+import 'package:todoapp/views/EditTodo.dart';
 import 'package:todoapp/views/TodoItem.dart';
 
 class Home extends StatelessWidget {
@@ -22,7 +23,9 @@ class Home extends StatelessWidget {
           ...homeController.items
               .map(
                 (todo) => new TodoItem(
-              onItemView: null,
+              onItemView: (Todo todo) {
+                Get.to(EditTodo(), arguments: todo);
+              },
               todo: todo,
             ),
           ).toList()

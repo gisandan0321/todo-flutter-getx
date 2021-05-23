@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/app/constants/Status.dart';
 import 'package:todoapp/models/Todo.dart';
+import 'package:get/get.dart';
 
 class TodoItem extends StatelessWidget {
   final ViewCallBack onItemView;
@@ -14,12 +15,7 @@ class TodoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new ListTile(
-      leading: Checkbox(
-        value: todo.status == Status.DONE,
-        onChanged: (bool newValue) {
-          // onChanged(newValue);
-        },
-      ),
+      leading: new Icon(Icons.assignment),
       title: new Text(todo.title),
       subtitle: new Text(todo.description),
       onTap: () {
