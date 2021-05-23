@@ -40,7 +40,6 @@ class EditTodoController extends GetxController {
       Toaster.normal(ResponseMessage.SUCCESS_EDIT_TODO);
       for (int i = 0; i < homeController.items.length; i++) {
         if (homeController.items[i].id == todoId) {
-          print("Matched");
           homeController.items[i] = todo;
           break;
         }
@@ -52,6 +51,21 @@ class EditTodoController extends GetxController {
   }
 
   void deleteTodo() async {
+    var database = await QueryBuilder().initDatabase();
 
+    Todo todo = new Todo(id: todoId);
+    var result = await todo.delete(database);
+
+    if (result > 0) {
+      Toaster.normal(ResponseMessage.SUCCESS_EDIT_TODO);
+      for (int i = 0; i < homeController.items.length; i++) {
+        if (homeController.items[i].id == todoId) {
+          homeController.items.removeAt(i);
+          break;
+        }
+      }
+    } else {
+      Toaster.error(ResponseMessage.ERROR_DELETE_TODO);
+    }
   }
 }
